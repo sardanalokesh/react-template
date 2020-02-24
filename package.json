@@ -2,6 +2,18 @@
   "name": "react-template",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Ihor Klieshchov",
+    "email": "ihor.klieshchov@gmail.com"
+  },
+  "scripts": {
+    "docker:dev:build": "docker-compose -f support/dev/docker-compose.yml build",
+    "docker:dev:up": "docker-compose -f support/dev/docker-compose.yml up || true",
+    "docker:prod:build": "docker build -f support/prod/Dockerfile . -t react-ui",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
@@ -14,12 +26,6 @@
     "react-dom": "^16.12.0",
     "react-scripts": "3.4.0",
     "typescript": "^3.7.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

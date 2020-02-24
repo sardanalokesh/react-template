@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  react-ui:
+    build:
+      context: ../..
+      dockerfile: ./support/dev/Dockerfile
+    volumes:
+      - "../../src:/app/src"
+  proxy:
+    build:
+      context: ../..
+      dockerfile: ./support/dev/proxy/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - BACKEND=http://json-server:3000
+  json-server:
+    build:
+      context: ../..
+      dockerfile: ./support/dev/json-server/Dockerfile
+    ports:
+      - "3001:3000"
+    volumes:
+      - "./json-server/db.json:/db.json"
